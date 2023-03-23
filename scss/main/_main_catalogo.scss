@@ -1,0 +1,13 @@
+@import "./variables";
+
+/* MAIN: CATALOGO */
+/* páginas del catalogo */
+.paginas-catalogo {
+    border-radius: 0px;
+    margin: 10px;
+    padding: 10px;
+    font-weight: 600;
+    &:hover i {
+        color: map-get($colores, "secundario");
+    }
+}

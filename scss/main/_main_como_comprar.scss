@@ -1,0 +1,80 @@
+@import "./variables";
+
+/* MAIN: COMO COMPRAR */
+.como-comprar-container {
+    background-color: map-get($colores, "primario");
+    color: map-get($colores, "secundario");
+    img {
+        width: 70px;
+        margin: 26px;
+    }
+    h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 16px;
+    }
+    .como-comprar-texto {
+        font-size: 0.875rem;
+        color: map-get($colores, "secundario");
+    }
+    .como-comprar-texto-subtitulos {
+        font-size: 1rem;
+        color: map-get($colores, "secundario");
+    }
+    /* vende lo que ya no usas */
+    a {
+        .como-comprar-texto-subtitulos {
+            @include hover-acento();
+        }
+    }
+}
+
+/* media queries: main como comprar */
+@media screen and (max-width: 991px) {
+    .como-comprar-container {
+        img {
+            width: 65px;
+        }
+        h3 {
+            font-size: 1.3rem;
+        }
+        .como-comprar-texto {
+            font-size: 0.8rem;
+        }
+        .como-comprar-texto-subtitulos {
+            font-size: 0.9rem;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .como-comprar-container {
+        h3 {
+            font-size: 1.5rem;
+        }
+        .como-comprar-texto {
+            font-size: 1rem;
+        }
+        .como-comprar-texto-subtitulos {
+            font-size: 1.1rem;
+        }
+    }
+}
+
+@media screen and (max-width: 576px) and (min-width: 320px) {
+    .como-comprar-container {
+        img {
+            width: 60px;
+        }
+        h3 {
+            font-size: 1rem;
+        }
+        .como-comprar-texto {
+            font-size: 0.8rem;
+        }
+        .como-comprar-texto-subtitulos {
+            font-size: 0.9rem;
+        }
+    }
+}

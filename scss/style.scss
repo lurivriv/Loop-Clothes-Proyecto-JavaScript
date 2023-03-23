@@ -1,0 +1,26 @@
+@import "./variables";
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: map-get($colores, "primario");
+    box-sizing: border-box;
+    overflow-x: hidden;
+    main {
+        overflow-x: hidden;
+        section {
+            overflow-y: hidden;
+        }
+    }
+}
+
+@import "./reset";
+@import "./header";
+@import "./main/main";
+@import "./main/main_index";
+@import "./main/main_catalogo";
+@import "./main/main_como_comprar";
+@import "./main/main_conocenos";
+@import "./main/main_contacto";
+@import "./footer";

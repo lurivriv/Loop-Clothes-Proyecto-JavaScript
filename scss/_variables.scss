@@ -1,0 +1,24 @@
+// COLORES
+$colores: (
+  "primario": #1a1a1a,
+  "secundario": #f6f6f6,
+  "acento": #ff9a9a,
+  "gris": #b7b7b7,
+);
+
+// HOVER AL COLOR ACENTO
+@mixin hover-acento {
+  transition: color 0.3s ease;
+  &:hover {
+    color: map-get($colores, "acento");
+  }
+}
+
+// HOVER DEL BOTON PRIMARIO
+@mixin hover-btn-primario {
+  transition: color 0.3s ease;
+  &:hover {
+    background-image: linear-gradient(to bottom, map-get($colores, "acento"), #fbadad);
+    color: map-get($colores, "primario");
+  }
+}

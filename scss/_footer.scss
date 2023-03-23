@@ -1,0 +1,37 @@
+@import "./variables";
+
+/* FOOTER */
+footer {
+    background-color: map-get($colores, "primario");
+    margin-top: 80px;
+    padding-top: 40px;
+    padding-bottom: 24px;
+}
+
+/* logo */
+.logo-footer {
+    width: 100px;
+}
+
+/* redes sociales */
+.red-social-icon {
+    color: map-get($colores, "secundario");
+    font-size: 1.5rem;
+    @include hover-acento();
+}
+
+/* copyright */
+.h4-copyright {
+    text-align: center;
+    font-size: 0.625rem;
+    font-weight: 500;
+    color: map-get($colores, "gris");
+}
+
+ /* media queries: footer */
+ @media screen and (max-width: 768px) {
+    footer {
+        margin-top: 50px;
+        padding-top: 30px;
+    }
+}

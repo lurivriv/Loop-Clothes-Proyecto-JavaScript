@@ -1,0 +1,64 @@
+@import "./variables";
+
+/* MAIN: INDEX */
+/* banner */
+#sectionUno {
+    width: 100vw;
+    height: 480px;
+    background-image: url(../images/banner_index.jpg);
+    background-size: cover;
+    text-align: center;
+    .sectionUno-subtituloBanner {
+        font-size: 5rem;
+        font-weight: bold;
+    }
+    .sectionUno-parrafoBanner {
+        width: 800px;
+        font-size: 1rem;
+        font-weight: 500;
+        margin: 0 auto 30px auto;
+    }
+}
+
+/* media queries: main index */
+@media screen and (max-width: 991px) {
+    /* banner */
+    #sectionUno {
+        height: 380px;
+        .sectionUno-subtituloBanner {
+            font-size: 4rem;
+        }
+        .sectionUno-parrafoBanner {
+            width: 660px;
+            font-size: 0.9rem;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* banner */
+    #sectionUno {
+        height: 320px;
+        .sectionUno-subtituloBanner {
+            font-size: 2.9rem;
+        }
+        .sectionUno-parrafoBanner {
+            width: 400px;
+            font-size: 0.8rem;
+        }
+    }
+}
+
+@media screen and (max-width: 576px) and (min-width: 320px) {
+     /* banner */
+    #sectionUno {
+        height: 220px;
+        .sectionUno-subtituloBanner {
+            font-size: 1.5rem;
+        }
+        .sectionUno-parrafoBanner {
+            width: 300px;
+            font-size: 0.6rem;
+        }
+    }
+}

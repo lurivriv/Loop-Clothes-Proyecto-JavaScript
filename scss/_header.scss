@@ -1,0 +1,112 @@
+@import "./variables";
+
+/* HEADER Y NAV */
+header {
+    background-color: map-get($colores, "secundario");
+    border-bottom: 1px solid map-get($colores, "primario");
+    // logo
+    img {
+        width: 100px;
+    }
+}
+
+/* buscador y carrito */
+.navbar-btn-container {
+    width: 80px;
+    order: 100;
+    .navbar-btn {
+        background-color: map-get($colores, "secundario");
+        border: none;
+        padding: 10px;
+    }
+}
+
+/* items del nav */
+.nav-link {
+    color: map-get($colores, "primario");
+    font-weight: 500;
+    @include hover-acento();
+}
+
+/* catalogo: menu desplegable (hover) */
+.desplegable {
+    display: inline-block;
+    position: relative;
+    &:hover .desplegable-contenido {
+        display: block;
+    }
+    .desplegable-contenido {
+        display: none;
+        position: absolute;
+        width: 188px;
+        overflow: auto;
+        background-color: map-get($colores, "secundario");
+        border-radius: 0px 0px 4px 4px;
+        font-weight: 400;
+        text-align: left;
+        a {
+            display: block;
+            color: map-get($colores, "primario");
+            padding: 8px 16px;
+            text-decoration: none;
+            &:hover {
+                color: map-get($colores, "secundario");
+                background-color: map-get($colores, "primario");
+            }
+        }
+    }
+}
+
+/* catalogo: menu desplegable (dropdown) */
+#menu-desplegable-hamburguesa {
+    display: none;
+}
+
+/* media queries: header */
+@media screen and (max-width: 991px) {
+    /* buscador y carrito */
+    .navbar-btn-container {
+        order: 0;
+    }
+    /* menu hamburguesa (responsive) */
+   .navbar-toggler {
+        border: none;
+        color: map-get($colores, "secundario");
+    } 
+    /* catalogo: menu desplegable (hover) */
+    #menu-desplegable-hover {
+        display: none;
+        .desplegable {
+            display: none;
+            .desplegable-contenido {
+                display: none;
+            }
+        } 
+    }
+    /* catalogo: menu desplegable (dropdown) */
+    #menu-desplegable-hamburguesa {
+        display: block;
+        .dropdown-menu {
+            background-color: map-get($colores, "secundario");
+            border: none;
+            .dropdown-first-item {
+                font-weight: 500;
+            }
+            .dropdown-item:hover {
+                color: map-get($colores, "secundario");
+                background-color: map-get($colores, "primario");
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) and (min-width: 320px) {
+    /* buscador y carrito */
+    .navbar-btn-container {
+        width: 60px;
+        margin-right: 15px;
+        .navbar-btn {
+            padding: 4px;
+        }
+    }   
+}

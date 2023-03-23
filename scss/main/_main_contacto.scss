@@ -1,0 +1,88 @@
+@import "./variables";
+
+/* MAIN: CONTACTO */
+/* redes sociales */
+.subtitulo-contacto {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.red-social-contacto {
+    margin-bottom: 40px;
+    i {
+        font-size: 2rem;
+        text-align: center;
+        @include hover-acento();
+    }
+    figcaption {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: map-get($colores, "primario");
+        @include hover-acento();
+    }
+}
+  
+/* formulario */
+form {
+    .form-control-sm {
+        padding: 10px;
+        border: 1px solid map-get($colores, "gris");
+        font-weight: 500;
+    }
+    .text-area {
+        resize: none;
+        height: 150px;
+    }
+    .btn-form {
+        padding: 8px;
+        background-color: map-get($colores, "primario");
+        color: map-get($colores, "secundario");
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 500;
+        @include hover-btn-primario();
+    }
+}
+
+/* media queries: main contacto */
+@media screen and (max-width: 1200px) {
+    /* redes sociales */
+    .subtitulo-contacto {
+        font-size: 1rem;
+    }
+    .red-social-contacto {
+        i {
+            font-size: 1.5rem;
+        }
+        figcaption {
+            font-size: 1rem;
+        }
+    }
+    /* formulario */
+    .btn-form {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 576px) and (min-width: 320px) {
+    /* redes sociales */
+    .subtitulo-contacto {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+    .red-social-contacto {
+        margin-bottom: 20px;
+        i {
+            font-size: 1.2rem;
+        }
+        figcaption {
+            font-size: 0.9rem;
+        }
+    }
+    /* formulario */
+    .btn-form {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Te brindamos ayuda e información sobre cómo comprar las prendas de ropa de segunda mano en Loop clothes.">
+    <meta name="keywords"  content="ayuda, guia, como comprar, informacion, comprar ropa, vender ropa">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/8991c871c6.js" crossorigin="anonymous"></script>
+    <!-- Animaciones -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../images/loop_clothes.ico">
+    <title>Cómo comprar - Loop Clothes</title>
+</head>
+<body>
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <!-- menu hamburguesa (responsive) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- logo -->
+                <a class="navbar-brand" href="../index.html">
+                    <img
+                    src="../images/logo_loop_clothes.svg"
+                    alt="Logo Loop clothes"
+                    >
+                </a>
+                <!-- buscador y carrito -->
+                <div class="navbar-btn-container">
+                    <button class="navbar-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="navbar-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+                <!-- nav -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0">
+                        <li class="nav-item p-2">
+                            <a class="nav-link" aria-current="page" href="../index.html">INICIO</a>
+                        </li>
+                        <!-- catalogo: menu desplegable (hover) -->
+                        <li id="menu-desplegable-hover" class="nav-item p-2">
+                            <div class="desplegable">
+                                <a class="nav-link dropdown-toggle" href="catalogo.html">
+                                    CATÁLOGO
+                                </a>
+                                <div class="desplegable-contenido">
+                                    <ul>
+                                        <li><a href="#">Buzos</a></li>
+                                        <li><a href="#">Calzado</a></li>
+                                        <li><a href="#">Camisas</a></li>
+                                        <li><a href="#">Camperas</a></li>
+                                        <li><a href="#">Pantalones y Jeans</a></li>
+                                        <li><a href="#">Remeras y Tops</a></li>
+                                        <li><a href="#">Shorts</a></li>
+                                        <li><a href="#">Vestidos</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- catalogo: menu desplegable (dropdown) -->
+                        <li id="menu-desplegable-hamburguesa" class="nav-item p-2 dropdown">
+                            <a class="nav-link dropdown-toggle nav-link-dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              CATÁLOGO
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item dropdown-first-item" href="catalogo.html">Catálogo completo</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Buzos</a></li>
+                                <li><a class="dropdown-item" href="#">Calzado</a></li>
+                                <li><a class="dropdown-item" href="#">Camisas</a></li>
+                                <li><a class="dropdown-item" href="#">Camperas</a></li>
+                                <li><a class="dropdown-item" href="#">Pantalones y Jeans</a></li>
+                                <li><a class="dropdown-item" href="#">Remeras y Tops</a></li>
+                                <li><a class="dropdown-item" href="#">Shorts</a></li>
+                                <li><a class="dropdown-item" href="#">Vestidos</a></li>
+                            </ul>
+                        </li>
+                        <!-- otros items del nav -->
+                        <li class="nav-item p-2">
+                            <a class="nav-link" href="como_comprar.html"><b>CÓMO COMPRAR</b></a>
+                        </li>
+                        <li class="nav-item p-2">
+                            <a class="nav-link" href="conocenos.html">CONOCÉNOS</a>
+                        </li>
+                        <li class="nav-item p-2">
+                            <a class="nav-link" href="contacto.html">CONTACTO</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- titulo -->
+        <div class="row">
+            <h2 class="section-titulo">CÓMO COMPRAR</h2>
+        </div>
+        <!-- section como comprar -->
+        <div class="container-fluid p-5 my-4 como-comprar-container">
+            <section class="row gx-5 justify-content-center">
+                <!-- compra y pago -->
+                <div class="col-xl-3 col-md-6 col-sm-9 col-12">
+                    <div class="row justify-content-center">
+                        <img src="../images/compra_y_pago.png" alt="Compra y pago">
+                        <h3>COMPRA Y PAGO</h3>
+                    </div>
+                    <div class="row">
+                        <p class="como-comprar-texto">La compra se realiza a través de <b class="como-comprar-texto">Instagram</b> 
+                            o <b class="como-comprar-texto">Whatsapp</b>. Una vez hecho el pedido, se 
+                            te proporcionarán los datos del medio de pago elegido.</p>
+                    </div>
+                    <ul class="row">
+                        <li><i class="fa-solid fa-chevron-right col-1 como-comprar-texto"></i><b class="col-11 como-comprar-texto-subtitulos">Transferencia bancaria</b>
+                            <p class="col-11 offset-1 como-comprar-texto">a cuenta BROU.</p>
+                        </li>
+                        <li><i class="fa-solid fa-chevron-right col-1 como-comprar-texto"></i><b class="col-11 como-comprar-texto-subtitulos">Depósito gratis</b>
+                                <p class="col-11 offset-1 como-comprar-texto">en Abitab / Red pagos.</p>
+                        </li>
+                        <li><i class="fa-solid fa-chevron-right col-1 como-comprar-texto"></i><b class="col-11 como-comprar-texto-subtitulos">Contado</b>
+                                <p class="col-11 offset-1 como-comprar-texto">al obtener el pedido.</p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- envíos y retiros -->
+                <div class="col-xl-3 col-md-6 col-sm-9 col-12">
+                    <div class="row justify-content-center">
+                        <img src="../images/envios_y_retiros.png" alt="Compra y pago">
+                        <h3>ENVÍOS Y RETIROS</h3>
+                    </div>
+                    <ul class="row">
+                        <li><i class="fa-solid fa-chevron-right col-1 como-comprar-texto"></i><b class="col-11 como-comprar-texto-subtitulos">Retiro personal</b>
+                            <p class="col-11 offset-1 como-comprar-texto">Podes retirar tu pedido personalmente en Florida ciudad.</p>
+                        </li>
+                        <li><i class="fa-solid fa-chevron-right col-1 como-comprar-texto"></i><b class="col-11 como-comprar-texto-subtitulos">Envíos a domicilio</b>
+                                <p class="col-11 offset-1 como-comprar-texto">Te llevamos el pedido a tu casa en Florida por un extra de <b class="como-comprar-texto">$40</b>.</p>
+                        </li>
+                        <li><i class="fa-solid fa-chevron-right col-1 como-comprar-texto"></i><b class="col-11 como-comprar-texto-subtitulos">Envíos a todo el país</b>
+                                <p class="col-11 offset-1 como-comprar-texto">A elección por DAC, Mirtrans, Correo uruguayo, UES.</p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- no hay cambios ni devoluciones -->
+                <div class="col-xl-3 col-md-6 col-sm-9 col-12">
+                    <div class="row justify-content-center">
+                        <img src="../images/no_hay_cambios_ni_devoluciones.png" alt="Compra y pago">
+                        <h3>NO HAY CAMBIOS NI DEVOLUCIONES</h3>
+                    </div>
+                    <div class="row">
+                        <p class="como-comprar-texto">Te damos toda la información para que tu compra sea exitosa,
+                            cualquier duda será respondida cuanto antes.</p>
+                    </div>
+                    <div class="row">
+                        <p class="como-comprar-texto">Recordá que tu pedido puede ser el deseado por alguien más y 
+                            no queremos confusiones por parte de clientes sobre la disponibilidad.</p>
+                    </div>
+                    <div class="row">
+                        <p class="como-comprar-texto">¡No dudes en consultar tus preguntas!</p>
+                    </div>
+                </div>
+                <!-- vende lo que ya no usas -->
+                <div class="col-xl-3 col-md-6 col-sm-9 col-12">
+                    <div class="row justify-content-center">
+                        <img src="../images/vende_lo_que_ya_no_usas.png" alt="Compra y pago">
+                        <h3>VENDÉ LO QUE YA NO USÁS</h3>
+                    </div>
+                    <div class="row">
+                        <p class="como-comprar-texto">Contactános por</p>
+                    </div>
+                    <ul class="row gy-3">
+                        <li><i class="fa-solid fa-chevron-right col-1 como-comprar-texto"></i><a href="https://www.instagram.com/loopclothes.uy/" target="_blank"><b class="col-11 como-comprar-texto-subtitulos">Instragram</b></a></li>
+                        <li><i class="fa-solid fa-chevron-right col-1 como-comprar-texto"></i><a href="https://wa.me/095888132" target="_blank"><b class="col-11 como-comprar-texto-subtitulos">Whatsapp</b></a></li>
+                        <li><i class="fa-solid fa-chevron-right col-1 como-comprar-texto"></i><a href="contacto.html"><b class="col-11 como-comprar-texto-subtitulos">Sección de contacto</b></a></li>
+                    </ul>
+                    <div class="row">
+                        <p class="como-comprar-texto">y contános sobre las prendas que te
+                            interesan vender en <b class="como-comprar-texto">Loop clothes</b>.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container-fluid">
+            <!-- logo -->
+            <div class="row justify-content-center">
+                <img class="logo-footer" src="../images/logo_loop_clothes_claro.svg" alt="Logo Loop clothes">
+            </div>
+            <!-- redes sociales -->
+            <ul class="row justify-content-center my-4 my-sm-5 text-center">
+                <li class="col-2 col-sm-1">
+                    <a href="https://www.instagram.com/loopclothes.uy/" target="_blank">
+                        <i class="fa-brands fa-instagram red-social-icon"></i>
+                    </a>
+                </li>
+                <li class="col-2 col-sm-1">
+                    <a href="https://wa.me/095888132" target="_blank">
+                        <i class="fa-brands fa-whatsapp red-social-icon"></i>
+                    </a>
+                </li>
+                <li class="col-2 col-sm-1">
+                    <a href="mailto:loopclothes.uy@gmail.com" target="_blank">
+                        <i class="fa-regular fa-envelope red-social-icon"></i>
+                    </a>
+                </li>
+            </ul>
+            <!-- copyright -->
+            <div class="row">
+                <h4 class="h4-copyright">Copyright 2022 | Loop clothes</h4>
+            </div>
+        </div>
+    </footer>
+    <!-- Animaciones -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="./scripts/main.js"></script>
+</body>
+</html>
