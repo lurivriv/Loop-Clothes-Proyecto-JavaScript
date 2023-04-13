@@ -192,9 +192,12 @@ header {
   /* cards */
   .card {
     margin: 5px; }
+    .card .card-title {
+      font-size: 0.75rem; }
     .card .card-subtitle {
       font-size: 0.6rem; }
     .card .btn-card {
+      padding: 6px;
       border-radius: 6px;
       font-size: 0.5rem; } }
 
