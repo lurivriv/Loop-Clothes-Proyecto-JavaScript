@@ -3,11 +3,16 @@
 /* HEADER Y NAV */
 header {
     background-color: map-get($colores, "secundario");
-    border-bottom: 1px solid map-get($colores, "primario");
-    // logo
+    /* logo */
     img {
         width: 100px;
     }
+}
+
+.contenedor-nav {
+    background-color: map-get($colores, "secundario");
+    z-index: 10;
+    border-bottom: 1px solid map-get($colores, "primario");
 }
 
 /* buscador y carrito */
@@ -18,7 +23,95 @@ header {
         background-color: map-get($colores, "secundario");
         border: none;
         padding: 10px;
+        i {
+            @include hover-acento();
+        }
     }
+}
+
+/* barra de busqueda */
+.contenedorBusqueda {
+    position: fixed;
+    top: -10px;
+    width: 100%;
+    background-color: map-get($colores, "secundario");
+    padding: 15px 15px 12px 15px;
+    z-index: 9;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 600ms;
+    display: flex;
+    input {
+        display: block;
+        width: 50%;
+        padding: 10px 15px;
+        font-size: 1rem;
+        color: map-get($colores, "primario");
+        border: 2px solid rgba(26, 26, 26, 0.3);
+        border-radius: 4px;
+    }
+    .botonBuscar {
+        padding: 0px 16px;
+        margin-left: 20px;
+        background-color: map-get($colores, "primario");
+        color: map-get($colores, "secundario");
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 500;
+        text-align: center;
+        @include hover-btn-primario();
+    }
+}
+
+/* boton lupa cuando está el buscador abierto */
+.botonCerrarBuscador {
+    color: map-get($colores, "primario");
+    font-size: 1.33rem;
+    @include hover-acento();
+}
+
+/* caja de resultados */
+.cajaBusqueda {
+    position: fixed;
+    top: 136px;
+    width: 49%;
+    background-color: map-get($colores, "secundario");
+    z-index: 8;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0px 0px 8px 8px;
+    display: none;
+    padding-top: 10px;
+    li a {
+        display: block;
+        color: map-get($colores, "primario");
+        width: 100%;
+        padding: 8px 15px;
+        font-weight: 400;
+        font-size: 0.9rem;
+        i {
+            margin-right: 20px;
+            color: rgba(26, 26, 26, 0.3);
+        }
+        &:hover {
+            color: map-get($colores, "secundario");
+            background-color: map-get($colores, "primario");
+            i {
+                color: rgba(246, 246, 246, 0.5);
+            }
+        }
+    }
+}
+
+/* background cuando el buscador está abierto */
+.fondoOscuroBusqueda {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
 }
 
 /* items del nav */
@@ -68,6 +161,40 @@ header {
     .navbar-btn-container {
         order: 0;
     }
+
+    /* barra de busqueda */
+    .contenedorBusqueda {
+        padding: 12px 12px 9px 12px;
+        input {
+            padding: 8px 12px;
+            font-size: 0.8rem;
+        }
+        .botonBuscar {
+            padding: 0px 13px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+        }
+    }
+
+    /* caja de resultados */
+    .cajaBusqueda {
+        li a {
+            padding: 6px 13px;
+            i {
+                margin-right: 18px;
+            }
+        }
+    }
+    /* caja de resultados */
+    .cajaBusqueda {
+        top: 130px;
+        padding-top: 0px;
+        li a {
+            padding: 6px 13px;
+            font-size: 0.8rem;
+        }
+    }
+
     /* menu hamburguesa (responsive) */
    .navbar-toggler {
         border: none;
@@ -108,5 +235,31 @@ header {
         .navbar-btn {
             padding: 4px;
         }
-    }   
+    } 
+    
+    /* barra de busqueda */
+    .contenedorBusqueda {
+        padding: 10px 10px 7px 10px;
+        input {
+            padding: 6px 9px;
+            font-size: 0.6rem;
+            border: 1px solid rgba(26, 26, 26, 0.3);
+        }
+        .botonBuscar {
+            padding: 0px 8px;
+            border-radius: 4px;
+            font-size: 0.5rem;
+        }
+    }
+
+    /* caja de resultados */
+    .cajaBusqueda {
+        top: 115px;
+        padding-top: 2px;
+        border-radius: 0px 0px 6px 6px;
+        li a {
+            padding: 4px 10px;
+            font-size: 0.6rem;
+        }
+    }
 }

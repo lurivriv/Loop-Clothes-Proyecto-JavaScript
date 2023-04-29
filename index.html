@@ -23,7 +23,17 @@
 </head>
 <body>
     <header class="sticky-top">
-        <nav class="navbar navbar-expand-lg">
+        <!-- barra de búsqueda -->
+        <div class="contenedorBusqueda">
+            <input type="text" class="inputBusqueda col-7 offset-3" class="form-control-sm" placeholder="¿Qué querés buscar?">
+            <button class="botonBuscar col-2">BUSCAR</button>
+        </div>
+        <!-- caja de resultados -->
+        <ul class="cajaBusqueda"></ul>
+        <!-- background cuando el buscador está abiert -->
+        <div class="fondoOscuroBusqueda"></div>
+        <!-- nav bar-->
+        <nav class="navbar navbar-expand-lg contenedor-nav">
             <div class="container">
                 <!-- menu hamburguesa (responsive) -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,8 +48,17 @@
                 </a>
                 <!-- buscador y carrito -->
                 <div class="navbar-btn-container">
-                    <button class="navbar-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <button class="navbar-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+                    <button class="navbar-btn" id="botonBusqueda">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <button class="navbar-btn" id="verCarrito">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span id="cantidadCarrito"></span>
+                    </button>
+                    <!-- contenedor del modal del carrito -->
+                    <div class="modalFondo">
+                        <div id="modalContenedor"></div>
+                    </div>
                 </div>
                 <!-- nav -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -128,7 +147,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Top rosado</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-7 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-7 offset-1" data-id="1">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-4">$390</h6>
                             </div>
                         </div>
@@ -138,7 +157,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Skinny jean</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-7 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-7 offset-1" data-id="30">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-4">$550</h6>
                             </div>
                         </div>
@@ -148,7 +167,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Remera de la rosa</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-7 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-7 offset-1" data-id="2">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-4">$300</h6>
                             </div>
                         </div>
@@ -158,7 +177,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Short con perlas</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-7 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-7 offset-1" data-id="31">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-4">$350</h6>
                             </div>
                         </div>
@@ -170,7 +189,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Short 5 botones</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-7 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-7 offset-1" data-id="32">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-4">$490</h6>
                             </div>
                         </div>
@@ -180,7 +199,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Remera con frase</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-7 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-7 offset-1" data-id="3">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-4">$300</h6>
                             </div>
                         </div>
@@ -190,7 +209,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Campera amarilla</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-7 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-7 offset-1" data-id="4">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-4">$390</h6>
                             </div>
                         </div>
@@ -200,7 +219,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Short blanco</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-7 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-7 offset-1" data-id="33">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-4">$490</h6>
                             </div>
                         </div>
@@ -215,7 +234,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Top rosado</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-6 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-6 offset-1" data-id="1">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-5">$390</h6>
                             </div>
                         </div>
@@ -225,7 +244,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Skinny jean</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-6 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-6 offset-1" data-id="30">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-5">$550</h6>
                             </div>
                         </div>
@@ -235,7 +254,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Remera de la rosa</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-6 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-6 offset-1" data-id="2">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-5">$300</h6>
                             </div>
                         </div>
@@ -247,7 +266,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Short con perlas</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-6 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-6 offset-1" data-id="31">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-5">$350</h6>
                             </div>
                         </div>
@@ -257,7 +276,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Short 5 botones</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-6 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-6 offset-1" data-id="32">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-5">$490</h6>
                             </div>
                         </div>
@@ -267,7 +286,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Remera con frase</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-6 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-6 offset-1" data-id="3">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-5">$300</h6>
                             </div>
                         </div>
@@ -282,7 +301,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Top rosado</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-6 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-6 offset-1" data-id="1">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-5">$390</h6>
                             </div>
                         </div>
@@ -292,7 +311,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Skinny jean</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-6 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-6 offset-1" data-id="30">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-5">$550</h6>
                             </div>
                         </div>
@@ -304,7 +323,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Remera de la rosa</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-6 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-6 offset-1" data-id="2">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-5">$300</h6>
                             </div>
                         </div>
@@ -314,7 +333,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Short con perlas</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-6 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-6 offset-1" data-id="31">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-5">$350</h6>
                             </div>
                         </div>
@@ -326,7 +345,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Short 5 botones</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-6 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-6 offset-1" data-id="32">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-5">$490</h6>
                             </div>
                         </div>
@@ -336,7 +355,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Remera con frase</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-6 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-6 offset-1" data-id="3">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-5">$300</h6>
                             </div>
                         </div>
@@ -348,7 +367,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Campera amarilla</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-6 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-6 offset-1" data-id="4">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-5">$390</h6>
                             </div>
                         </div>
@@ -358,7 +377,7 @@
                         <div class="card-body px-0">
                             <h5 class="card-title">Short blanco</h5>
                             <div class="row align-items-center">
-                                <a href="#" class="btn-card col-6 offset-1">Agregar</a>
+                                <button class="botonCards btn-card col-6 offset-1" data-id="33">Agregar</button>
                                 <h6 class="card-subtitle text-muted col-5">$490</h6>
                             </div>
                         </div>
@@ -405,6 +424,10 @@
     </script>
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="./scripts/main.js"></script>
+    <!-- JavaScript -->
+    <script src="./scripts/productos.js"></script>
+    <script src="./scripts/carrito.js"></script>
+    <script src="./scripts/busqueda.js"></script>
+    <script src="./scripts/formulario.js"></script>
 </body>
 </html>

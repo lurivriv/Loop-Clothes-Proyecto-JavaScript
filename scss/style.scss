@@ -7,6 +7,7 @@ body {
     color: map-get($colores, "primario");
     box-sizing: border-box;
     overflow-x: hidden;
+    height: 100%;
     main {
         overflow-x: hidden;
         section {
@@ -24,3 +25,4 @@ body {
 @import "./main/main_conocenos";
 @import "./main/main_contacto";
 @import "./footer";
+@import "./carrito"
