@@ -1,17 +1,6 @@
 @import "./variables";
 
-/* cuando se presiona el boton */
-.btnMousedown {
-    transition: all 0.4s ease-in-out !important; 
-    font-weight: 800 !important;
-}
-
-/* cuando se suelta el boton */
-.btnMouseUp {
-    transition: all 0.4s ease-in-out !important; 
-    font-weight: 500 !important;
-}
-
+/* CARRITO */
 /* background modal carrito */
 .modalFondo {
     position: fixed;
@@ -24,133 +13,141 @@
     align-items: center;
     z-index: 7777;
     background-color: rgba(0, 0, 0, 0.4);
+}
 
-    /* modal carrito */
-    #modalContenedor {
-        width: 70%;
-        margin: 10%, 15%;
-        max-height: 90vh;
-        overflow-y: auto;
-        overflow-x: hidden;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 8888;
-        border-radius: 20px;
+/* modal carrito */
+#modalContenedor {
+    width: 70%;
+    margin: 10%, 15%;
+    max-height: 90vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 8888;
+    border-radius: 20px;
+    background-color: map-get($colores, "primario");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* titulo del carrito */
+    .modalTitulo {
+        width: 100%;
         background-color: map-get($colores, "primario");
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        /* titulo del carrito */
-        .modalTitulo {
-            width: 100%;
-            background-color: map-get($colores, "primario");
-            position: sticky;
-            top: 0;
-            z-index: 9999;
-            h2 {
-                font-size: 1.75rem;
-                font-weight: 500;
-                color: map-get($colores, "secundario");
-            }
-
-            /* botón para cerrar carrito */
-            .modalBoton {
-                background-color: map-get($colores, "primario");
-                border: none;
-                padding: 10px;
-                display: flex;
-                justify-content: center;
-                i {
-                    color: map-get($colores, "secundario");
-                    font-size: 1.5rem;
-                    @include hover-acento();
-                }
-            }
+        position: sticky;
+        top: 0;
+        z-index: 9999;
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: map-get($colores, "secundario");
         }
 
-        /* informacion de los productos en el carrito */
-        .carritoProductos {
-            display: felx;
-            flex-direction: row;
-            align-content: space-around;
-            align-items: center;
-            width: 90%;
+        /* botón para cerrar carrito */
+        .modalBoton {
+            background-color: map-get($colores, "primario");
+            border: none;
             padding: 10px;
-            border-bottom: 1px solid rgba(255, 154, 154, 0.4);
-            a {
-                /* nombre */
-                h5 {
-                    font-size: 1rem;
-                    color: map-get($colores, "secundario");
-                    @include hover-acento();
-                }
-                /* imagen */
-                img {
-                    max-width: 100%;
-                    min-width: 60px;
-                    height: auto;
-                    margin: 5px;
-                    border-radius: 8px;
-                    transition: box-shadow 0.3s ease;
-                    &:hover {
-                        box-shadow: 0px 5px 8px rgba(255, 154, 154, 0.4);
-                    }
-                }
-            }
-            /* precio */
-            h6 {
-                font-size: 1rem;
+            display: flex;
+            justify-content: center;
+            i {
                 color: map-get($colores, "secundario");
-            }
-
-            /* botón de papelera para eliminar un producto del carrito */
-            .eliminarProducto {
-                background-color: map-get($colores, "primario");
-                border: none;
-                i {
-                    color: map-get($colores, "secundario");
-                    font-size: 1.1rem;
-                    @include hover-acento();
-                }
+                font-size: 1.5rem;
+                @include hover-acento();
             }
         }
+    }
 
-        /* precio total de los productos en el carrito */
-        .footerModal {
+    /* informacion de los productos en el carrito */
+    .carritoProductos {
+        display: felx;
+        flex-direction: row;
+        align-content: space-around;
+        align-items: center;
+        width: 90%;
+        padding: 10px;
+        border-bottom: 1px solid rgba(255, 154, 154, 0.4);
+        /* nombre */
+        a h5 {
+            font-size: 1rem;
+            color: map-get($colores, "secundario");
+            @include hover-acento();
+        }
+        /* imagen */
+        a img {
+            max-width: 100%;
+            min-width: 60px;
+            height: auto;
+            margin: 5px;
+            border-radius: 8px;
+            transition: box-shadow 0.3s ease;
+            &:hover {
+                box-shadow: 0px 5px 8px rgba(255, 154, 154, 0.4);
+            }
+        }
+        /* precio */
+        h6 {
+            font-size: 1rem;
+            color: map-get($colores, "secundario");
+        }
+        /* botón para eliminar un producto del carrito */
+        .eliminarProducto {
             background-color: map-get($colores, "primario");
-            padding-bottom: 12px;
-            position: sticky;
-            bottom: 0px;
-            z-index: 9999;
-            justify-content: space-evenly;
-            h2 {
-                display: inline-block; 
-                width: auto;
-                font-size: 1.2rem;
-                padding: 15px;
-                text-align: center;
-                margin: 15px;
+            border: none;
+            i {
                 color: map-get($colores, "secundario");
-                border-bottom: 2px solid map-get($colores, "acento");
-            }
-            button {
-                display: inline-block; 
-                width: auto;
-                padding: 0px 15px;
-                margin: 15px;
-                background-color: map-get($colores, "secundario");
-                color: map-get($colores, "primario");
-                border: none;
-                border-radius: 10px;
-                font-size: 1.2rem;
-                font-weight: 600;
-                text-align: center;
-                @include hover-btn-primario();
+                font-size: 1.1rem;
+                @include hover-acento();
             }
         }
+    }
+}
+
+/* mensaje si el carrito está vacío */
+.mensajeCarritoVacio {
+    align-items: center;
+    padding: 30px;
+    h3 {
+        color: map-get($colores, "secundario");
+        margin: 20px;
+        font-size: 1.3rem;
+    }
+}
+
+/* precio total de los productos en el carrito */
+.footerModal {
+    background-color: map-get($colores, "primario");
+    padding-bottom: 12px;
+    position: sticky;
+    bottom: 0px;
+    z-index: 9999;
+    justify-content: space-evenly;
+    h2 {
+        display: inline-block; 
+        width: auto;
+        font-size: 1.2rem;
+        padding: 15px;
+        text-align: center;
+        margin: 15px;
+        color: map-get($colores, "secundario");
+        border-bottom: 2px solid map-get($colores, "acento");
+    }
+    button {
+        display: inline-block; 
+        width: auto;
+        padding: 0px 15px;
+        margin: 15px;
+        background-color: map-get($colores, "secundario");
+        color: map-get($colores, "primario");
+        border: none;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        text-align: center;
+        @include hover-btn-primario();
     }
 }
 
@@ -177,201 +174,179 @@
     }
 }
 
-
 /* media queries: carrito */
 @media screen and (max-width: 991px) {
-    .modalFondo {
-        #modalContenedor {
-            /* titulo del carrito */
-            .modalTitulo {
-                h2 {
-                    font-size: 1.4rem;
-                }
-    
-                /* botón para cerrar carrito */
-                .modalBoton {
-                    padding: 8px;
-                    i {
-                        font-size: 1.2rem;
-                    }
-                }
-            }
-    
-            /* informacion de los productos en el carrito */
-            .carritoProductos {
-                padding: 10px;
-                a {
-                    /* nombre */
-                    h5 {
-                        font-size: 0.8rem;
-                    }                    
-                }
-                /* precio */
-                h6 {
-                    font-size: 0.8rem;
-                }
-    
-                /* botón de papelera para eliminar un producto del carrito */
-                .eliminarProducto {
-                    i {
-                        font-size: 0.8rem;
-                    }
-                }
-            }
-    
-            /* precio total de los productos en el carrito */
-            .footerModal {
-                padding-bottom: 10px;
-                h2 {
-                    font-size: 0.9rem;
-                    padding: 10px;
-                    margin: 15px, 10px, 10px, 10px;
-                }
-                button {
-                    padding: 0px 10px;
-                    margin: 15px, 10px, 10px, 10px;
-                    border-radius: 8px;
-                    font-size: 0.9rem;
-                }
-            }
+    /* titulo del carrito */
+    #modalContenedor .modalTitulo h2 {
+        font-size: 1.4rem;
+    }
+
+    /* botón para cerrar carrito */
+    #modalContenedor .modalTitulo .modalBoton {
+        padding: 8px;
+        i {
+            font-size: 1.2rem;
+        }
+    }
+        
+    /* informacion de los productos en el carrito */
+    #modalContenedor .carritoProductos {
+        padding: 10px;
+        /* nombre */
+        a h5 {
+            font-size: 0.8rem;                 
+        }
+        /* precio */
+        h6 {
+            font-size: 0.8rem;
+        }
+        /* botón para eliminar un producto del carrito */
+        .eliminarProducto i {
+            font-size: 0.8rem;
+        }
+    }
+
+    /* mensaje si el carrito está vacío */
+    .mensajeCarritoVacio {
+        padding: 20px;
+        h3 {
+            margin: 15px;
+            font-size: 1.1rem;
+        }
+    }
+
+    /* precio total de los productos en el carrito */
+    .footerModal {
+        padding-bottom: 10px;
+        h2 {
+            font-size: 0.9rem;
+            padding: 10px;
+            margin: 15px, 10px, 10px, 10px;
+        }
+        button {
+            padding: 0px 10px;
+            margin: 15px, 10px, 10px, 10px;
+            border-radius: 8px;
+            font-size: 0.9rem;
         }
     }
 }
 
 @media screen and (max-width: 768px) {
-    .modalFondo {
-        #modalContenedor {
-            /* titulo del carrito */
-            .modalTitulo {
-                h2 {
-                    font-size: 1.2rem;
-                }
-    
-                /* botón para cerrar carrito */
-                .modalBoton {
-                    i {
-                        font-size: 1.2rem;
-                    }
-                }
-            }
-    
-            /* informacion de los productos en el carrito */
-            .carritoProductos {
-                a {
-                    /* nombre */
-                    h5 {
-                        font-size: 0.7rem;
-                    }                    
-                }
-                /* precio */
-                h6 {
-                    font-size: 0.7rem;
-                }
-    
-                /* botón de papelera para eliminar un producto del carrito */
-                .eliminarProducto {
-                    i {
-                        font-size: 0.7rem;
-                    }
-                }
-            }
-    
-            /* precio total de los productos en el carrito */
-            .footerModal {
-                h2 {
-                    font-size: 0.8rem;
-                    padding: 8px;
-                    margin: 12px, 8px, 8px, 8px;
-                    border-bottom: 1.8px solid map-get($colores, "acento");
-                }
-                button {
-                    padding: 0px 8px;
-                    margin: 12px, 8px, 8px, 8px;
-                    font-size: 0.8rem;
-                }
-            }
+    /* titulo del carrito */
+    #modalContenedor .modalTitulo h2 {
+        font-size: 1.2rem;
+    }
+
+    /* botón para cerrar carrito */
+    #modalContenedor .modalTitulo .modalBoton i {
+        font-size: 1.2rem;
+    }
+
+    /* informacion de los productos en el carrito */
+    /* nombre */
+    #modalContenedor .carritoProductos a h5 {
+        font-size: 0.7rem;                     
+    }
+    /* precio */
+    #modalContenedor .carritoProductos h6 {
+        font-size: 0.7rem;
+    }
+    /* botón para eliminar un producto del carrito */
+    #modalContenedor .carritoProductos .eliminarProducto i {
+        font-size: 0.7rem;
+    }
+
+    /* mensaje si el carrito está vacío */
+    .mensajeCarritoVacio {
+        padding: 15px;
+        h3 {
+            margin: 10px;
+            font-size: 0.9rem;
         }
     }
 
-    /* contenedor del contador */
-    #verCarrito {
-        /* contador */
-        #cantidadCarrito {
-            width: 18px;
-            height: 18px;
-            font-size: 0.6rem;
-            padding: 2px;
-        }
+    /* precio total de los productos en el carrito */
+    .footerModal h2 {
+        font-size: 0.8rem;
+        padding: 8px;
+        margin: 12px, 8px, 8px, 8px;
+        border-bottom: 1.8px solid map-get($colores, "acento");
+    }
+    .footerModal button {
+        padding: 0px 8px;
+        margin: 12px, 8px, 8px, 8px;
+        font-size: 0.8rem;
+    }
+
+    /* contador */
+    #verCarrito #cantidadCarrito {
+        width: 18px;
+        height: 18px;
+        font-size: 0.6rem;
+        padding: 2px;
     }
 }
 
+
 @media screen and (max-width: 576px) and (min-width: 320px) {
-    .modalFondo {
-        #modalContenedor {
-            /* titulo del carrito */
-            .modalTitulo {
-                h2 {
-                    font-size: 1rem;
-                }
-    
-                /* botón para cerrar carrito */
-                .modalBoton {
-                    i {
-                        font-size: 1rem;
-                    }
-                }
-            }
-    
-            /* informacion de los productos en el carrito */
-            .carritoProductos {
-                width: 100%;
-                padding: 4px;
-                a {
-                    /* nombre */
-                    h5 {
-                        font-size: 0.6rem;
-                    }                    
-                }
-                /* precio */
-                h6 {
-                    font-size: 0.6rem;
-                }
-    
-                /* botón de papelera para eliminar un producto del carrito */
-                .eliminarProducto {
-                    i {
-                        font-size: 0.6rem;
-                    }
-                }
-            }
-    
-            /* precio total de los productos en el carrito */
-            .footerModal {
-                h2 {
-                    font-size: 0.6rem;
-                    padding: 6px;
-                    margin: 10px, 2px, 8px, 2px;
-                    border-bottom: 1.5px solid map-get($colores, "acento");
-                }
-                button {
-                    padding: 0px 4px;
-                    margin: 10px, 2px, 8px, 2px;
-                    font-size: 0.6rem;
-                }
-            }
+    /* titulo del carrito */
+    #modalContenedor .modalTitulo h2 {
+        font-size: 1rem;
+    }
+
+    /* botón para cerrar carrito */
+    #modalContenedor .modalTitulo .modalBoton i {
+        font-size: 1rem;
+    }
+
+    /* informacion de los productos en el carrito */
+    #modalContenedor .carritoProductos {
+        width: 100%;
+        padding: 4px;
+        /* nombre */
+        a h5 {
+            font-size: 0.6rem;
+        }                    
+        /* precio */
+        h6 {
+            font-size: 0.6rem;
+        }
+        /* botón de papelera para eliminar un producto del carrito */
+        .eliminarProducto {
+            font-size: 0.6rem;
         }
     }
 
-    /* contenedor del contador */
-    #verCarrito {
-        /* contador */
-        #cantidadCarrito {
-            width: 17px;
-            height: 17px;
-            font-size: 0.6rem;
-            padding: 1px;
-            top: 18px;
-            right: -4px;
+    /* mensaje si el carrito está vacío */
+    .mensajeCarritoVacio {
+        padding: 10px;
+        h3 {
+            margin: 5px;
+            font-size: 0.7rem;
         }
+    }
+
+    /* precio total de los productos en el carrito */
+    .footerModal h2 {
+        font-size: 0.6rem;
+        padding: 6px;
+        margin: 10px, 2px, 8px, 2px;
+        border-bottom: 1.5px solid map-get($colores, "acento");
+    }
+    .footerModal button {
+        padding: 0px 4px;
+        margin: 10px, 2px, 8px, 2px;
+        font-size: 0.6rem;
+    }
+
+    /* contador */
+    #verCarrito #cantidadCarrito {
+        width: 17px;
+        height: 17px;
+        font-size: 0.6rem;
+        padding: 1px;
+        top: 18px;
+        right: -4px;
     }
 }

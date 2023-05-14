@@ -1,13 +1,35 @@
 // información del form
 class InformacionForm {
     // recibir los datos y guardarlos en el localStorage
-    datosForm (nombre, email, mensaje) {
-        const datos = {
-            nombre: nombre,
-            email: email,
-            mensaje: mensaje,
+    async datosForm (nombre, email, mensaje) {
+        try {
+            const respuesta = await fetch("https://jsonplaceholder.typicode.com/posts", {
+                method: "POST",
+                body: JSON.stringify({
+                    nombre: nombre,
+                    email: email,
+                    mensaje: mensaje,
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            })
+            const datos = await respuesta.json()
+            console.log(datos)
+            this.guardarFormLocalStorage(datos)
+        } catch (error) {
+            console.log(error)
+            Swal.fire({
+                title: "¡Lo sentimos!",
+                text: "Ocurrió un error con tu mensaje, intentalo de nuevo más tarde.",
+                icon: "error",
+                confirmButtonText: "ENTENDIDO",
+                background: "#f6f6f6",
+                color: "#1a1a1a",
+                confirmButtonColor: "#1a1a1a",
+                timer: 3000
+            })
         }
-        this.guardarFormLocalStorage(datos)
     }
     
     // guardar los datos en el localStorage
@@ -40,7 +62,7 @@ const enviarForm = () => {
 
     // enviar formulario
     const formulario = document.getElementById("formulario")
-    formulario.addEventListener("submit", (e) => {
+    formulario.addEventListener("submit", async (e) => {
         e.preventDefault()
 
         // valores del formulario
@@ -48,11 +70,27 @@ const enviarForm = () => {
         let email = document.getElementById("email").value 
         let mensaje = document.getElementById("mensaje").value 
 
-        // acceso a la clase para guardar en el localStorage
-        informacionForm.datosForm(nombre, email, mensaje) 
+        // mostrar que se está enviando el formulario
+        btnEnviar.innerText = "Enviando..."
 
-        alert("¡Gracias por comunicarte!")
-        console.log(`Nombre: ${nombre}\nEmail: ${email}\nMensaje: ${mensaje}`)
+        // acceso a la clase para guardar en el localStorage
+        await informacionForm.datosForm(nombre, email, mensaje) 
+
+        // mostrar que el fomrulario fue enviado
+        btnEnviar.innerText = "Enviado"
+
+        // alert de envío de formulario
+        Swal.fire({
+            title: "¡Gracias por contactarnos!",
+            text: "En breve nos comunicaremos con vos.",
+            icon: "success",
+            showConfirmButton: false,
+            background: "#f6f6f6",
+            color: "#1a1a1a",
+            timer: 3000
+        }) .then (() => {
+            btnEnviar.innerText = "Enviar"
+        })
 
         // resetear el formulario
         document.getElementById("formulario").reset()

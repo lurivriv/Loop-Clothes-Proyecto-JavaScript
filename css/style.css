@@ -5,9 +5,14 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: #1a1a1a;
   box-sizing: border-box;
-  overflow-x: hidden;
-  height: 100%; }
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; }
   body main {
+    padding-bottom: 80px;
+    margin-top: 0;
+    flex-grow: 1;
     overflow-x: hidden; }
     body main section {
       overflow-y: hidden; }
@@ -25,6 +30,7 @@ i {
 
 /* HEADER Y NAV */
 header {
+  flex-shrink: 0;
   background-color: #f6f6f6;
   /* logo */ }
   header img {
@@ -49,7 +55,7 @@ header {
         color: #ff9a9a; }
 
 /* barra de busqueda */
-.contenedorBusqueda {
+#contenedorBusqueda {
   position: fixed;
   top: -10px;
   width: 100%;
@@ -60,7 +66,7 @@ header {
   transform: translateX(-50%);
   transition: all 600ms;
   display: flex; }
-  .contenedorBusqueda input {
+  #contenedorBusqueda input {
     display: block;
     width: 50%;
     padding: 10px 15px;
@@ -68,7 +74,7 @@ header {
     color: #1a1a1a;
     border: 2px solid rgba(26, 26, 26, 0.3);
     border-radius: 4px; }
-  .contenedorBusqueda .botonBuscar {
+  #contenedorBusqueda #botonBuscar {
     padding: 0px 16px;
     margin-left: 20px;
     background-color: #1a1a1a;
@@ -79,7 +85,7 @@ header {
     font-weight: 500;
     text-align: center;
     transition: color 0.3s ease; }
-    .contenedorBusqueda .botonBuscar:hover {
+    #contenedorBusqueda #botonBuscar:hover {
       background-image: linear-gradient(to bottom, #ff9a9a, #fbadad);
       color: #1a1a1a; }
 
@@ -92,7 +98,7 @@ header {
     color: #ff9a9a; }
 
 /* caja de resultados */
-.cajaBusqueda {
+#cajaBusqueda {
   position: fixed;
   top: 136px;
   width: 49%;
@@ -103,24 +109,28 @@ header {
   border-radius: 0px 0px 8px 8px;
   display: none;
   padding-top: 10px; }
-  .cajaBusqueda li a {
+  #cajaBusqueda li a {
     display: block;
     color: #1a1a1a;
     width: 100%;
     padding: 8px 15px;
     font-weight: 400;
     font-size: 0.9rem; }
-    .cajaBusqueda li a i {
+    #cajaBusqueda li a i {
       margin-right: 20px;
       color: rgba(26, 26, 26, 0.3); }
-    .cajaBusqueda li a:hover {
+    #cajaBusqueda li a:hover {
       color: #f6f6f6;
       background-color: #1a1a1a; }
-      .cajaBusqueda li a:hover i {
+      #cajaBusqueda li a:hover i {
         color: rgba(246, 246, 246, 0.5); }
+    #cajaBusqueda li a img {
+      border-radius: 4px;
+      width: 60px;
+      margin-right: 20px; }
 
 /* background cuando el buscador está abierto */
-.fondoOscuroBusqueda {
+#fondoOscuroBusqueda {
   width: 100%;
   height: 100%;
   position: fixed;
@@ -165,30 +175,25 @@ header {
   display: none; }
 
 /* media queries: header */
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 991.5px) {
   /* buscador y carrito */
   .navbar-btn-container {
     order: 0; }
   /* barra de busqueda */
-  .contenedorBusqueda {
+  #contenedorBusqueda {
     padding: 12px 12px 9px 12px; }
-    .contenedorBusqueda input {
+    #contenedorBusqueda input {
       padding: 8px 12px;
       font-size: 0.8rem; }
-    .contenedorBusqueda .botonBuscar {
+    #contenedorBusqueda #botonBuscar {
       padding: 0px 13px;
       border-radius: 8px;
       font-size: 0.7rem; }
   /* caja de resultados */
-  .cajaBusqueda li a {
-    padding: 6px 13px; }
-    .cajaBusqueda li a i {
-      margin-right: 18px; }
-  /* caja de resultados */
-  .cajaBusqueda {
+  #cajaBusqueda {
     top: 130px;
     padding-top: 0px; }
-    .cajaBusqueda li a {
+    #cajaBusqueda li a {
       padding: 6px 13px;
       font-size: 0.8rem; }
   /* menu hamburguesa (responsive) */
@@ -222,26 +227,326 @@ header {
     .navbar-btn-container .navbar-btn {
       padding: 4px; }
   /* barra de busqueda */
-  .contenedorBusqueda {
+  #contenedorBusqueda {
     padding: 10px 10px 7px 10px; }
-    .contenedorBusqueda input {
+    #contenedorBusqueda input {
       padding: 6px 9px;
       font-size: 0.6rem;
       border: 1px solid rgba(26, 26, 26, 0.3); }
-    .contenedorBusqueda .botonBuscar {
+    #contenedorBusqueda #botonBuscar {
       padding: 0px 8px;
       border-radius: 4px;
       font-size: 0.5rem; }
   /* caja de resultados */
-  .cajaBusqueda {
+  #cajaBusqueda {
+    width: 80%;
+    right: 10%;
     top: 115px;
     padding-top: 2px;
     border-radius: 0px 0px 6px 6px; }
-    .cajaBusqueda li a {
+    #cajaBusqueda li a {
       padding: 4px 10px;
-      font-size: 0.6rem; } }
+      font-size: 0.6rem; }
+      #cajaBusqueda li a img {
+        width: 40px; } }
+
+/* CARRITO */
+/* background modal carrito */
+.modalFondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 7777;
+  background-color: rgba(0, 0, 0, 0.4); }
+
+/* modal carrito */
+#modalContenedor {
+  width: 70%;
+  margin: 10%, 15%;
+  max-height: 90vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 8888;
+  border-radius: 20px;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* titulo del carrito */
+  /* informacion de los productos en el carrito */ }
+  #modalContenedor .modalTitulo {
+    width: 100%;
+    background-color: #1a1a1a;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    /* botón para cerrar carrito */ }
+    #modalContenedor .modalTitulo h2 {
+      font-size: 1.75rem;
+      font-weight: 500;
+      color: #f6f6f6; }
+    #modalContenedor .modalTitulo .modalBoton {
+      background-color: #1a1a1a;
+      border: none;
+      padding: 10px;
+      display: flex;
+      justify-content: center; }
+      #modalContenedor .modalTitulo .modalBoton i {
+        color: #f6f6f6;
+        font-size: 1.5rem;
+        transition: color 0.3s ease; }
+        #modalContenedor .modalTitulo .modalBoton i:hover {
+          color: #ff9a9a; }
+  #modalContenedor .carritoProductos {
+    display: felx;
+    flex-direction: row;
+    align-content: space-around;
+    align-items: center;
+    width: 90%;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 154, 154, 0.4);
+    /* nombre */
+    /* imagen */
+    /* precio */
+    /* botón para eliminar un producto del carrito */ }
+    #modalContenedor .carritoProductos a h5 {
+      font-size: 1rem;
+      color: #f6f6f6;
+      transition: color 0.3s ease; }
+      #modalContenedor .carritoProductos a h5:hover {
+        color: #ff9a9a; }
+    #modalContenedor .carritoProductos a img {
+      max-width: 100%;
+      min-width: 60px;
+      height: auto;
+      margin: 5px;
+      border-radius: 8px;
+      transition: box-shadow 0.3s ease; }
+      #modalContenedor .carritoProductos a img:hover {
+        box-shadow: 0px 5px 8px rgba(255, 154, 154, 0.4); }
+    #modalContenedor .carritoProductos h6 {
+      font-size: 1rem;
+      color: #f6f6f6; }
+    #modalContenedor .carritoProductos .eliminarProducto {
+      background-color: #1a1a1a;
+      border: none; }
+      #modalContenedor .carritoProductos .eliminarProducto i {
+        color: #f6f6f6;
+        font-size: 1.1rem;
+        transition: color 0.3s ease; }
+        #modalContenedor .carritoProductos .eliminarProducto i:hover {
+          color: #ff9a9a; }
+
+/* mensaje si el carrito está vacío */
+.mensajeCarritoVacio {
+  align-items: center;
+  padding: 30px; }
+  .mensajeCarritoVacio h3 {
+    color: #f6f6f6;
+    margin: 20px;
+    font-size: 1.3rem; }
+
+/* precio total de los productos en el carrito */
+.footerModal {
+  background-color: #1a1a1a;
+  padding-bottom: 12px;
+  position: sticky;
+  bottom: 0px;
+  z-index: 9999;
+  justify-content: space-evenly; }
+  .footerModal h2 {
+    display: inline-block;
+    width: auto;
+    font-size: 1.2rem;
+    padding: 15px;
+    text-align: center;
+    margin: 15px;
+    color: #f6f6f6;
+    border-bottom: 2px solid #ff9a9a; }
+  .footerModal button {
+    display: inline-block;
+    width: auto;
+    padding: 0px 15px;
+    margin: 15px;
+    background-color: #f6f6f6;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    transition: color 0.3s ease; }
+    .footerModal button:hover {
+      background-image: linear-gradient(to bottom, #ff9a9a, #fbadad);
+      color: #1a1a1a; }
+
+/* contenedor del contador */
+#verCarrito {
+  position: relative;
+  display: inline-block;
+  /* contador */ }
+  #verCarrito #cantidadCarrito {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    display: none;
+    font-size: 0.7rem;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+    color: #1a1a1a;
+    background-color: #ff9a9a;
+    border-radius: 50%;
+    padding: 2px;
+    top: 21px;
+    right: -2px; }
+
+/* media queries: carrito */
+@media screen and (max-width: 991px) {
+  /* titulo del carrito */
+  #modalContenedor .modalTitulo h2 {
+    font-size: 1.4rem; }
+  /* botón para cerrar carrito */
+  #modalContenedor .modalTitulo .modalBoton {
+    padding: 8px; }
+    #modalContenedor .modalTitulo .modalBoton i {
+      font-size: 1.2rem; }
+  /* informacion de los productos en el carrito */
+  #modalContenedor .carritoProductos {
+    padding: 10px;
+    /* nombre */
+    /* precio */
+    /* botón para eliminar un producto del carrito */ }
+    #modalContenedor .carritoProductos a h5 {
+      font-size: 0.8rem; }
+    #modalContenedor .carritoProductos h6 {
+      font-size: 0.8rem; }
+    #modalContenedor .carritoProductos .eliminarProducto i {
+      font-size: 0.8rem; }
+  /* mensaje si el carrito está vacío */
+  .mensajeCarritoVacio {
+    padding: 20px; }
+    .mensajeCarritoVacio h3 {
+      margin: 15px;
+      font-size: 1.1rem; }
+  /* precio total de los productos en el carrito */
+  .footerModal {
+    padding-bottom: 10px; }
+    .footerModal h2 {
+      font-size: 0.9rem;
+      padding: 10px;
+      margin: 15px, 10px, 10px, 10px; }
+    .footerModal button {
+      padding: 0px 10px;
+      margin: 15px, 10px, 10px, 10px;
+      border-radius: 8px;
+      font-size: 0.9rem; } }
+
+@media screen and (max-width: 768px) {
+  /* titulo del carrito */
+  #modalContenedor .modalTitulo h2 {
+    font-size: 1.2rem; }
+  /* botón para cerrar carrito */
+  #modalContenedor .modalTitulo .modalBoton i {
+    font-size: 1.2rem; }
+  /* informacion de los productos en el carrito */
+  /* nombre */
+  #modalContenedor .carritoProductos a h5 {
+    font-size: 0.7rem; }
+  /* precio */
+  #modalContenedor .carritoProductos h6 {
+    font-size: 0.7rem; }
+  /* botón para eliminar un producto del carrito */
+  #modalContenedor .carritoProductos .eliminarProducto i {
+    font-size: 0.7rem; }
+  /* mensaje si el carrito está vacío */
+  .mensajeCarritoVacio {
+    padding: 15px; }
+    .mensajeCarritoVacio h3 {
+      margin: 10px;
+      font-size: 0.9rem; }
+  /* precio total de los productos en el carrito */
+  .footerModal h2 {
+    font-size: 0.8rem;
+    padding: 8px;
+    margin: 12px, 8px, 8px, 8px;
+    border-bottom: 1.8px solid #ff9a9a; }
+  .footerModal button {
+    padding: 0px 8px;
+    margin: 12px, 8px, 8px, 8px;
+    font-size: 0.8rem; }
+  /* contador */
+  #verCarrito #cantidadCarrito {
+    width: 18px;
+    height: 18px;
+    font-size: 0.6rem;
+    padding: 2px; } }
+
+@media screen and (max-width: 576px) and (min-width: 320px) {
+  /* titulo del carrito */
+  #modalContenedor .modalTitulo h2 {
+    font-size: 1rem; }
+  /* botón para cerrar carrito */
+  #modalContenedor .modalTitulo .modalBoton i {
+    font-size: 1rem; }
+  /* informacion de los productos en el carrito */
+  #modalContenedor .carritoProductos {
+    width: 100%;
+    padding: 4px;
+    /* nombre */
+    /* precio */
+    /* botón de papelera para eliminar un producto del carrito */ }
+    #modalContenedor .carritoProductos a h5 {
+      font-size: 0.6rem; }
+    #modalContenedor .carritoProductos h6 {
+      font-size: 0.6rem; }
+    #modalContenedor .carritoProductos .eliminarProducto {
+      font-size: 0.6rem; }
+  /* mensaje si el carrito está vacío */
+  .mensajeCarritoVacio {
+    padding: 10px; }
+    .mensajeCarritoVacio h3 {
+      margin: 5px;
+      font-size: 0.7rem; }
+  /* precio total de los productos en el carrito */
+  .footerModal h2 {
+    font-size: 0.6rem;
+    padding: 6px;
+    margin: 10px, 2px, 8px, 2px;
+    border-bottom: 1.5px solid #ff9a9a; }
+  .footerModal button {
+    padding: 0px 4px;
+    margin: 10px, 2px, 8px, 2px;
+    font-size: 0.6rem; }
+  /* contador */
+  #verCarrito #cantidadCarrito {
+    width: 17px;
+    height: 17px;
+    font-size: 0.6rem;
+    padding: 1px;
+    top: 18px;
+    right: -4px; } }
 
 /* MAIN: GENERAL */
+/* cuando se presiona un boton */
+.btnMousedown {
+  transition: all 0.4s ease-in-out !important;
+  font-weight: 800 !important; }
+
+/* cuando se suelta un boton */
+.btnMouseUp {
+  transition: all 0.4s ease-in-out !important;
+  font-weight: 500 !important; }
+
 /* titulo de la seccion */
 .section-titulo {
   font-size: 1.75rem;
@@ -251,9 +556,17 @@ header {
   margin-top: 30px; }
 
 /* cards */
+#contenedor-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: minmax(auto, max-content);
+  justify-items: center;
+  align-items: start; }
+
 .card {
   border: none;
-  margin: 20px; }
+  width: 290px;
+  margin: 25px; }
   .card .card-img-top {
     transition: box-shadow 0.3s ease;
     border-radius: 8px; }
@@ -280,28 +593,33 @@ header {
       background-image: linear-gradient(to bottom, #ff9a9a, #fbadad);
       color: #1a1a1a; }
 
-/* responsive: cards */
-.responsive-mayor768 {
-  display: none; }
-
-.responsive-mayor320 {
-  display: none; }
-
 /* media queries: main general */
-@media screen and (max-width: 1200px) {
-  /* responsive */
-  .responsive-mayor1200 {
-    display: none; }
-  .responsive-mayor768 {
-    display: flex; } }
+@media screen and (max-width: 1399px) {
+  /* cards */
+  #contenedor-cards {
+    grid-template-columns: repeat(4, minmax(270px, 1fr)); }
+  .card {
+    width: 250px;
+    margin: 10px; } }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1200px) {
+  /* cards */
+  #contenedor-cards {
+    grid-template-columns: repeat(4, minmax(220px, 1fr)); }
+  .card {
+    width: 200px;
+    margin: 10px; } }
+
+@media screen and (max-width: 992px) {
   /* titulo de la sección */
   .section-titulo {
     font-size: 1.4rem; }
   /* cards */
+  #contenedor-cards {
+    grid-template-columns: repeat(3, minmax(190px, 1fr)); }
   .card {
-    margin: 8px; }
+    width: 220px;
+    margin: 6px; }
     .card .btn-card {
       border-radius: 8px;
       font-size: 0.7rem; } }
@@ -310,19 +628,26 @@ header {
   /* titulo de la sección */
   .section-titulo {
     font-size: 1.2rem; }
-  /* responsive */
-  .responsive-mayor768 {
-    display: none; }
-  .responsive-mayor320 {
-    display: flex; } }
+  /* cards */
+  /* cards */
+  #contenedor-cards {
+    grid-template-columns: repeat(2, minmax(260px, 1fr)); }
+  .card {
+    max-width: 320px;
+    min-width: 250px;
+    width: 40%;
+    margin: 5px; } }
 
 @media screen and (max-width: 576px) and (min-width: 320px) {
   /* titulo de la sección */
   .section-titulo {
     font-size: 0.9rem; }
   /* cards */
+  #contenedor-cards {
+    grid-template-columns: repeat(2, minmax(130px, 1fr)); }
   .card {
-    margin: 5px; }
+    max-width: 220px;
+    min-width: 140px; }
     .card .card-title {
       font-size: 0.75rem; }
     .card .card-subtitle {
@@ -379,16 +704,6 @@ header {
     #sectionUno .sectionUno-parrafoBanner {
       width: 300px;
       font-size: 0.6rem; } }
-
-/* MAIN: CATALOGO */
-/* páginas del catalogo */
-.paginas-catalogo {
-  border-radius: 0px;
-  margin: 10px;
-  padding: 10px;
-  font-weight: 600; }
-  .paginas-catalogo:hover i {
-    color: #f6f6f6; }
 
 /* MAIN: COMO COMPRAR */
 .como-comprar-container {
@@ -544,20 +859,22 @@ form .btn-form {
 
 /* FOOTER */
 footer {
+  flex-shrink: 0;
   background-color: #1a1a1a;
-  margin-top: 80px;
-  padding-top: 40px;
-  padding-bottom: 24px; }
+  padding-top: 24px;
+  padding-bottom: 18px; }
 
 /* logo */
 .logo-footer {
-  width: 100px; }
+  width: 100px;
+  margin-bottom: 6px; }
 
 /* redes sociales */
 .red-social-icon {
   color: #f6f6f6;
   font-size: 1.5rem;
-  transition: color 0.3s ease; }
+  transition: color 0.3s ease;
+  margin: 24px 0px; }
   .red-social-icon:hover {
     color: #ff9a9a; }
 
@@ -569,288 +886,13 @@ footer {
   color: #b7b7b7; }
 
 /* media queries: footer */
-@media screen and (max-width: 768px) {
-  footer {
-    margin-top: 50px;
-    padding-top: 30px; } }
-
-/* cuando se presiona el boton */
-.btnMousedown {
-  transition: all 0.4s ease-in-out !important;
-  font-weight: 800 !important; }
-
-/* cuando se suelta el boton */
-.btnMouseUp {
-  transition: all 0.4s ease-in-out !important;
-  font-weight: 500 !important; }
-
-/* background modal carrito */
-.modalFondo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 7777;
-  background-color: rgba(0, 0, 0, 0.4);
-  /* modal carrito */ }
-  .modalFondo #modalContenedor {
-    width: 70%;
-    margin: 10%, 15%;
-    max-height: 90vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 8888;
-    border-radius: 20px;
-    background-color: #1a1a1a;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* titulo del carrito */
-    /* informacion de los productos en el carrito */
-    /* precio total de los productos en el carrito */ }
-    .modalFondo #modalContenedor .modalTitulo {
-      width: 100%;
-      background-color: #1a1a1a;
-      position: sticky;
-      top: 0;
-      z-index: 9999;
-      /* botón para cerrar carrito */ }
-      .modalFondo #modalContenedor .modalTitulo h2 {
-        font-size: 1.75rem;
-        font-weight: 500;
-        color: #f6f6f6; }
-      .modalFondo #modalContenedor .modalTitulo .modalBoton {
-        background-color: #1a1a1a;
-        border: none;
-        padding: 10px;
-        display: flex;
-        justify-content: center; }
-        .modalFondo #modalContenedor .modalTitulo .modalBoton i {
-          color: #f6f6f6;
-          font-size: 1.5rem;
-          transition: color 0.3s ease; }
-          .modalFondo #modalContenedor .modalTitulo .modalBoton i:hover {
-            color: #ff9a9a; }
-    .modalFondo #modalContenedor .carritoProductos {
-      display: felx;
-      flex-direction: row;
-      align-content: space-around;
-      align-items: center;
-      width: 90%;
-      padding: 10px;
-      border-bottom: 1px solid rgba(255, 154, 154, 0.4);
-      /* precio */
-      /* botón de papelera para eliminar un producto del carrito */ }
-      .modalFondo #modalContenedor .carritoProductos a {
-        /* nombre */
-        /* imagen */ }
-        .modalFondo #modalContenedor .carritoProductos a h5 {
-          font-size: 1rem;
-          color: #f6f6f6;
-          transition: color 0.3s ease; }
-          .modalFondo #modalContenedor .carritoProductos a h5:hover {
-            color: #ff9a9a; }
-        .modalFondo #modalContenedor .carritoProductos a img {
-          max-width: 100%;
-          min-width: 60px;
-          height: auto;
-          margin: 5px;
-          border-radius: 8px;
-          transition: box-shadow 0.3s ease; }
-          .modalFondo #modalContenedor .carritoProductos a img:hover {
-            box-shadow: 0px 5px 8px rgba(255, 154, 154, 0.4); }
-      .modalFondo #modalContenedor .carritoProductos h6 {
-        font-size: 1rem;
-        color: #f6f6f6; }
-      .modalFondo #modalContenedor .carritoProductos .eliminarProducto {
-        background-color: #1a1a1a;
-        border: none; }
-        .modalFondo #modalContenedor .carritoProductos .eliminarProducto i {
-          color: #f6f6f6;
-          font-size: 1.1rem;
-          transition: color 0.3s ease; }
-          .modalFondo #modalContenedor .carritoProductos .eliminarProducto i:hover {
-            color: #ff9a9a; }
-    .modalFondo #modalContenedor .footerModal {
-      background-color: #1a1a1a;
-      padding-bottom: 12px;
-      position: sticky;
-      bottom: 0px;
-      z-index: 9999;
-      justify-content: space-evenly; }
-      .modalFondo #modalContenedor .footerModal h2 {
-        display: inline-block;
-        width: auto;
-        font-size: 1.2rem;
-        padding: 15px;
-        text-align: center;
-        margin: 15px;
-        color: #f6f6f6;
-        border-bottom: 2px solid #ff9a9a; }
-      .modalFondo #modalContenedor .footerModal button {
-        display: inline-block;
-        width: auto;
-        padding: 0px 15px;
-        margin: 15px;
-        background-color: #f6f6f6;
-        color: #1a1a1a;
-        border: none;
-        border-radius: 10px;
-        font-size: 1.2rem;
-        font-weight: 600;
-        text-align: center;
-        transition: color 0.3s ease; }
-        .modalFondo #modalContenedor .footerModal button:hover {
-          background-image: linear-gradient(to bottom, #ff9a9a, #fbadad);
-          color: #1a1a1a; }
-
-/* contenedor del contador */
-#verCarrito {
-  position: relative;
-  display: inline-block;
-  /* contador */ }
-  #verCarrito #cantidadCarrito {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    display: none;
-    font-size: 0.7rem;
-    font-weight: 600;
-    align-items: center;
-    justify-content: center;
-    color: #1a1a1a;
-    background-color: #ff9a9a;
-    border-radius: 50%;
-    padding: 2px;
-    top: 21px;
-    right: -2px; }
-
-/* media queries: carrito */
 @media screen and (max-width: 991px) {
-  .modalFondo #modalContenedor {
-    /* titulo del carrito */
-    /* informacion de los productos en el carrito */
-    /* precio total de los productos en el carrito */ }
-    .modalFondo #modalContenedor .modalTitulo {
-      /* botón para cerrar carrito */ }
-      .modalFondo #modalContenedor .modalTitulo h2 {
-        font-size: 1.4rem; }
-      .modalFondo #modalContenedor .modalTitulo .modalBoton {
-        padding: 8px; }
-        .modalFondo #modalContenedor .modalTitulo .modalBoton i {
-          font-size: 1.2rem; }
-    .modalFondo #modalContenedor .carritoProductos {
-      padding: 10px;
-      /* precio */
-      /* botón de papelera para eliminar un producto del carrito */ }
-      .modalFondo #modalContenedor .carritoProductos a {
-        /* nombre */ }
-        .modalFondo #modalContenedor .carritoProductos a h5 {
-          font-size: 0.8rem; }
-      .modalFondo #modalContenedor .carritoProductos h6 {
-        font-size: 0.8rem; }
-      .modalFondo #modalContenedor .carritoProductos .eliminarProducto i {
-        font-size: 0.8rem; }
-    .modalFondo #modalContenedor .footerModal {
-      padding-bottom: 10px; }
-      .modalFondo #modalContenedor .footerModal h2 {
-        font-size: 0.9rem;
-        padding: 10px;
-        margin: 15px, 10px, 10px, 10px; }
-      .modalFondo #modalContenedor .footerModal button {
-        padding: 0px 10px;
-        margin: 15px, 10px, 10px, 10px;
-        border-radius: 8px;
-        font-size: 0.9rem; } }
-
-@media screen and (max-width: 768px) {
-  .modalFondo #modalContenedor {
-    /* titulo del carrito */
-    /* informacion de los productos en el carrito */
-    /* precio total de los productos en el carrito */ }
-    .modalFondo #modalContenedor .modalTitulo {
-      /* botón para cerrar carrito */ }
-      .modalFondo #modalContenedor .modalTitulo h2 {
-        font-size: 1.2rem; }
-      .modalFondo #modalContenedor .modalTitulo .modalBoton i {
-        font-size: 1.2rem; }
-    .modalFondo #modalContenedor .carritoProductos {
-      /* precio */
-      /* botón de papelera para eliminar un producto del carrito */ }
-      .modalFondo #modalContenedor .carritoProductos a {
-        /* nombre */ }
-        .modalFondo #modalContenedor .carritoProductos a h5 {
-          font-size: 0.7rem; }
-      .modalFondo #modalContenedor .carritoProductos h6 {
-        font-size: 0.7rem; }
-      .modalFondo #modalContenedor .carritoProductos .eliminarProducto i {
-        font-size: 0.7rem; }
-    .modalFondo #modalContenedor .footerModal h2 {
-      font-size: 0.8rem;
-      padding: 8px;
-      margin: 12px, 8px, 8px, 8px;
-      border-bottom: 1.8px solid #ff9a9a; }
-    .modalFondo #modalContenedor .footerModal button {
-      padding: 0px 8px;
-      margin: 12px, 8px, 8px, 8px;
-      font-size: 0.8rem; }
-  /* contenedor del contador */
-  #verCarrito {
-    /* contador */ }
-    #verCarrito #cantidadCarrito {
-      width: 18px;
-      height: 18px;
-      font-size: 0.6rem;
-      padding: 2px; } }
+  /* redes sociales */
+  .red-social-icon {
+    margin: 18px 0px; } }
 
 @media screen and (max-width: 576px) and (min-width: 320px) {
-  .modalFondo #modalContenedor {
-    /* titulo del carrito */
-    /* informacion de los productos en el carrito */
-    /* precio total de los productos en el carrito */ }
-    .modalFondo #modalContenedor .modalTitulo {
-      /* botón para cerrar carrito */ }
-      .modalFondo #modalContenedor .modalTitulo h2 {
-        font-size: 1rem; }
-      .modalFondo #modalContenedor .modalTitulo .modalBoton i {
-        font-size: 1rem; }
-    .modalFondo #modalContenedor .carritoProductos {
-      width: 100%;
-      padding: 4px;
-      /* precio */
-      /* botón de papelera para eliminar un producto del carrito */ }
-      .modalFondo #modalContenedor .carritoProductos a {
-        /* nombre */ }
-        .modalFondo #modalContenedor .carritoProductos a h5 {
-          font-size: 0.6rem; }
-      .modalFondo #modalContenedor .carritoProductos h6 {
-        font-size: 0.6rem; }
-      .modalFondo #modalContenedor .carritoProductos .eliminarProducto i {
-        font-size: 0.6rem; }
-    .modalFondo #modalContenedor .footerModal h2 {
-      font-size: 0.6rem;
-      padding: 6px;
-      margin: 10px, 2px, 8px, 2px;
-      border-bottom: 1.5px solid #ff9a9a; }
-    .modalFondo #modalContenedor .footerModal button {
-      padding: 0px 4px;
-      margin: 10px, 2px, 8px, 2px;
-      font-size: 0.6rem; }
-  /* contenedor del contador */
-  #verCarrito {
-    /* contador */ }
-    #verCarrito #cantidadCarrito {
-      width: 17px;
-      height: 17px;
-      font-size: 0.6rem;
-      padding: 1px;
-      top: 18px;
-      right: -4px; } }
+  /* redes sociales */
+  .red-social-icon {
+    font-size: 1.3rem;
+    margin: 14px 0px; } }

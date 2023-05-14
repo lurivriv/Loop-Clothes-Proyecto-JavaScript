@@ -2,11 +2,11 @@
   "name": "sitio_web_js",
   "version": "1.0.0",
   "description": "Proyecto del curso JavaScript en CoderHouse, en base a la idea de crear un acceso web a las prendas de ropa de segunda mano vendidas a través de redes sociales",
-  "main": "index.js",
+  "main": "scripts/catalogo.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-css": "node-sass --include-path scss scss/style.scss css/style.css",
-    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+    "build-css": "node-sass --include-path scss scss/style.scss -o css",
+    "watch-css": "nodemon --watch scss --exec \"node-sass --include-path scss scss/style.scss -o css\""
   },
   "repository": {
     "type": "git",

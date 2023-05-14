@@ -2,15 +2,16 @@
 
 /* FOOTER */
 footer {
+    flex-shrink: 0;
     background-color: map-get($colores, "primario");
-    margin-top: 80px;
-    padding-top: 40px;
-    padding-bottom: 24px;
+    padding-top: 24px;
+    padding-bottom: 18px;
 }
 
 /* logo */
 .logo-footer {
     width: 100px;
+    margin-bottom: 6px;
 }
 
 /* redes sociales */
@@ -18,6 +19,7 @@ footer {
     color: map-get($colores, "secundario");
     font-size: 1.5rem;
     @include hover-acento();
+    margin: 24px 0px;
 }
 
 /* copyright */
@@ -28,10 +30,18 @@ footer {
     color: map-get($colores, "gris");
 }
 
- /* media queries: footer */
- @media screen and (max-width: 768px) {
-    footer {
-        margin-top: 50px;
-        padding-top: 30px;
+/* media queries: footer */
+@media screen and (max-width: 991px) {
+    /* redes sociales */
+    .red-social-icon {
+        margin: 18px 0px;
+    }
+}
+
+@media screen and (max-width: 576px) and (min-width: 320px) {
+    /* redes sociales */
+    .red-social-icon {
+        font-size: 1.3rem;
+        margin: 14px 0px;
     }
 }

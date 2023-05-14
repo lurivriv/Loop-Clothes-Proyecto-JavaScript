@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Encontrá prendas de ropa a precios increíbles. La ropa de segunda mano es una excelente idea para renovar tu ropero mientras ayudás al planeta.">
-    <meta name="keywords"  content="segunda mano uruguay, medioambiente, prendas de ropa, second hand, ropa de segunda mano, ropa">
+    <meta name="description" content="Navegá por nuestro catálogo y brindále una segunda oportunidad a las prendas de ropa que otras personas ya no quieren.">
+    <meta name="keywords"  content="catalogo, prendas de ropa, second hand, ropa de segunda mano, ropa, comprar ropa, vender ropa">
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/8991c871c6.js" crossorigin="anonymous"></script>
     <!-- Toastify -->
@@ -19,7 +20,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" href="./images/loop_clothes.ico">
-    <title>Loop Clothes - Uruguay</title>
+    <title>Catálogo - Loop Clothes</title>
 </head>
 <body>
     <header class="sticky-top">
@@ -64,13 +65,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0">
                         <li class="nav-item p-2">
-                            <a class="nav-link" aria-current="page" href="index.html"><b>INICIO</b></a>
+                            <a class="nav-link" aria-current="page" href="index.html">INICIO</a>
                         </li>
                         <!-- catalogo: menu desplegable (hover) -->
                         <li id="menu-desplegable-hover" class="nav-item p-2">
                             <div class="desplegable">
                                 <a class="nav-link dropdown-toggle" href="catalogo.html">
-                                    CATÁLOGO
+                                    <b>CATÁLOGO</b>
                                 </a>
                                 <div class="desplegable-contenido">
                                     <ul class="filtrarCatalogo">
@@ -89,7 +90,7 @@
                         <!-- catalogo: menu desplegable (dropdown) -->
                         <li id="menu-desplegable-hamburguesa" class="nav-item p-2 dropdown">
                             <a class="nav-link dropdown-toggle nav-link-dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              CATÁLOGO
+                                <b>CATÁLOGO</b>
                             </a>
                             <ul class="dropdown-menu filtrarCatalogo">
                                 <li><a class="dropdown-item dropdown-first-item" href="catalogo.html">Catálogo completo</a></li>
@@ -121,30 +122,29 @@
     </header>
 
     <main>
-        <!-- banner -->
         <div class="container-fluid">
-            <section id="sectionUno" class="row align-content-between">
-                <h2 class="section-titulo col-12">SECOND HAND</h2>
-                <h1 class="sectionUno-subtituloBanner col-12">Loop de segundas <br>oportunidades</h1>
-                <div class="col-12">
-                    <p class="sectionUno-parrafoBanner">Animáte a darle una segunda oportunidad a las prendas que otras personas ya no quieren y
-                        comprá ropa de segunda mano. Hagamos que entre en loop y no quede escondida.
-                        <br>¡Renová tu ropero!
-                    </p>
+            <!-- titulo -->
+            <div class="row">
+                <h2 class="section-titulo" id="tituloCatalogo">CATÁLOGO</h2>
+            </div>
+            <!-- section catalogo -->
+            <section class="row">
+                <!-- select -->
+                <div class="row justify-content-center mx-0 px-0">
+                    <select id="selectOrden" class="col-8 col-md-4 col-lg-3 my-3 form-select-sm p-2" aria-label="Default select example">
+                        <option selected value="ultimos">Ordenar por los últimos</option>
+                        <option value="menorMayor">Ordenar por precio: menor a mayor</option>
+                        <option value="mayorMenor">Ordenar por precio: mayor a menor</option>
+                    </select>
+                </div>
+                <!-- productos catalogo -->
+                <div class="container-fluid px-1 px-sm-2 px-lg-3 px-xxl-5">
+                    <div id="contenedor-cards" class="my-2 mx-1 mx-sm-2 mx-lg-3 mx-xxl-4 p-0"></div>
                 </div>
             </section>
         </div>
-        <!-- new arrivals -->
-        <section class="container-fluid">
-            <div class="row">
-                <h2 class="section-titulo">NEW ARRIVALS</h2>
-            </div>
-            <div class="container-fluid px-1 px-sm-2 px-lg-3 px-xxl-5">
-                <div id="contenedor-cards" class="my-2 mx-1 mx-sm-2 mx-lg-3 mx-xxl-4 p-0"></div>
-            </div>
-        </section>
     </main>
-    
+
     <footer>
         <div class="container-fluid">
             <!-- logo -->

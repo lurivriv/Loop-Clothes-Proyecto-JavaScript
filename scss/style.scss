@@ -6,9 +6,14 @@ body {
     font-family: 'Montserrat', sans-serif;
     color: map-get($colores, "primario");
     box-sizing: border-box;
-    overflow-x: hidden;
-    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     main {
+        padding-bottom: 80px;
+        margin-top: 0;
+        flex-grow: 1;
         overflow-x: hidden;
         section {
             overflow-y: hidden;
@@ -18,11 +23,10 @@ body {
 
 @import "./reset";
 @import "./header";
+@import "./carrito";
 @import "./main/main";
 @import "./main/main_index";
-@import "./main/main_catalogo";
 @import "./main/main_como_comprar";
 @import "./main/main_conocenos";
 @import "./main/main_contacto";
 @import "./footer";
-@import "./carrito"
